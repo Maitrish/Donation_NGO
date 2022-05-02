@@ -684,7 +684,7 @@
 
 
 
-    <!-- Donate Modal -->
+    <!-- Login Modal -->
     <div class="modal fade" id="donateModal" tabindex="-1" role="dialog" aria-labelledby="donateModalLabel" aria-hidden="true">
 
       <div class="modal-dialog">
@@ -694,7 +694,29 @@
             <h4 class="modal-title" id="donateModalLabel">DONATE NOW</h4>
           </div>
           <div class="modal-body">
+            <form class="form-donation">
+              <div class="container">
+                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#newUser">New User</button>
+                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#oldUser">Old User</button>
+                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#anoUser">Anonymous</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
+    </div> <!-- /.modal -->
+
+    <!-- Login New User Modal -->
+    <div class="modal fade" id="newUser" tabindex="-1" role="dialog" aria-labelledby="donateModalLabel" aria-hidden="true">
+
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="donateModalLabel">DONATE NOW</h4>
+          </div>
+          <div class="modal-body">
                 <form class="form-donation">
 
                         <h3 class="title-style-1 text-center">Thank you for your donation <span class="title-under"></span>  </h3>
@@ -726,6 +748,10 @@
                             </div>
 
                             <div class="form-group col-md-6">
+                              <input type="text" class="form-control" name="otp" placeholder="OTP*">
+                            </div>
+
+                            <div class="form-group col-md-6">
                                 <input type="text" class="form-control" name="phone" placeholder="Phone">
                             </div>
 
@@ -734,7 +760,7 @@
                         <div class="row">
 
                             <div class="form-group col-md-12">
-                                <input type="text" class="form-control" name="address" placeholder="Address">
+                                <input type="text" class="form-control" name="country" placeholder="Country">
                             </div>
 
                         </div>
@@ -749,13 +775,15 @@
                         </div>
 
                         <div class="row">
-
                             <div class="form-group col-md-12">
-                                <button type="submit" class="btn btn-primary pull-right" name="donateNow" >DONATE NOW</button>
+                                <button type="submit" class="btn btn-outline-primary pull-left" name="validate" >Verify Email</button>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-primary pull-right" name="donateNow" >NEXT</button>
                             </div>
 
                         </div>
-
+                        
 
 
                        
@@ -766,10 +794,131 @@
         </div>
       </div>
 
-    </div> <!-- /.modal -->
+    </div>
+
+  </div>
+
+   <!-- Login Old User Modal -->
+    <div class="modal fade" id="oldUser" tabindex="-1" role="dialog" aria-labelledby="donateModalLabel" aria-hidden="true">
+
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="donateModalLabel">DONATE NOW</h4>
+          </div>
+          <div class="modal-body">
+                <form class="form-donation">
+
+                        <h3 class="title-style-1 text-center">Thank you for your donation <span class="title-under"></span>  </h3>
+
+                        <div class="row">
+
+                            <div class="form-group col-md-12 ">
+                                <input type="text" class="form-control" id="amount" placeholder="AMOUNT(€)">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" name="email" placeholder="Email*">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                              <input type="text" class="form-control" name="otp" placeholder="OTP*">
+                            </div>
+                            
+
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" name="phone" placeholder="Phone">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="form-group col-md-12">
+                                <textarea cols="30" rows="4" class="form-control" name="note" placeholder="Additional note"></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-outline-primary pull-left" name="validate" >Verify Email</button>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-primary pull-right" name="donateNow" >NEXT</button>
+                            </div>
+
+                        </div>
+                        
+
+
+                      
+                    
+                </form>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+ <!-- Login Ano User Modal -->
+  <div class="modal fade" id="anoUser" tabindex="-1" role="dialog" aria-labelledby="donateModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="donateModalLabel">DONATE NOW</h4>
+        </div>
+        <div class="modal-body">
+              <form class="form-donation">
+
+                      <h3 class="title-style-1 text-center">Thank you for your donation <span class="title-under"></span>  </h3>
+
+                      <div class="row">
+
+                          <div class="form-group col-md-12 ">
+                              <input type="text" class="form-control" id="amount" placeholder="AMOUNT(€)">
+                          </div>
+
+                      </div>
+                      <div class="row">
+
+                          <div class="form-group col-md-12">
+                              <textarea cols="30" rows="4" class="form-control" name="note" placeholder="Additional note"></textarea>
+                          </div>
+
+                      </div>
+
+                      <div class="row">
+
+                          <div class="form-group col-md-12">
+                              <button type="submit" class="btn btn-primary pull-right" name="donateNow" >NEXT</button>
+                          </div>
+
+                      </div>
 
 
 
+                    
+                  
+              </form>
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
 
 
     <!--  Scripts
