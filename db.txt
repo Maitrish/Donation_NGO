@@ -1,0 +1,29 @@
+Create a database "E-Helping-Hand"
+
+
+1. donar_master table:-----
+CREATE TABLE donar_master(
+  id int NOT NULL,
+  first_name VARCHAR (200) NOT NULL,
+  last_name VARCHAR (200) NOT NULL,
+  email VARCHAR (255) NOT NULL,
+  address VARCHAR (300) NULL,
+  note VARCHAR (350) NULL,
+  is_verified VARCHAR (200) NOT NULL,
+  created_on datetime default CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+);
+
+
+
+2.OTP TABLE:------
+
+CREATE TABLE OTP(
+  id int NOT NULL,
+  otp VARCHAR(200) NOT NULL,
+  d_id INT NULL,
+  is_verified VARCHAR(200) NOT null,
+  created_on datetime default CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (d_id) REFERENCES donar_master(id)
+);
