@@ -3,7 +3,7 @@ Create a database "e-helping-hand"
 
 1. donar_master table:-----
 CREATE TABLE donar_master(
-  id int NOT NULL AUTO INCREMENT,
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL ,
   first_name VARCHAR (200) NOT NULL,
   last_name VARCHAR (200) NOT NULL,
   email VARCHAR (255) NOT NULL,
@@ -11,7 +11,16 @@ CREATE TABLE donar_master(
   country VARCHAR (255) NULL,
   address VARCHAR (300) NULL,
   note VARCHAR (350) NULL,
-  ammount VARCHAR (200) NOT NULL,
+  ammount VARCHAR (200) NULL,
+  created_on datetime default CURRENT_TIMESTAMP
+);
+
+
+2. ammount table:---
+CREATE TABLE ammount(
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL ,
+  d_id INT NOT NULL,
+  ammount VARCHAR (200) NULL,
   created_on datetime default CURRENT_TIMESTAMP,
-  PRIMARY KEY (id)
+  FOREIGN KEY (d_id) REFERENCES donar_master(id)
 );

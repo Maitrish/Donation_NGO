@@ -8,9 +8,9 @@ $dbName = "e-helping-hand";
 $db = mysqli_connect($host,$username,$password,$dbName);
  
 if (!$db) {
-    echo "Databse connection error";
+    echo "<script type='text/javascript'> console.log('Databse connection error');</script>"; 
 } else {
-    echo "Database connected Successfully";
+    echo "<script type='text/javascript'> console.log('Database connected Successfully');</script>"; 
 }
 
 ?>
