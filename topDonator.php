@@ -1,3 +1,6 @@
+<?php 
+include "security/db.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -199,36 +202,30 @@ $(document).ready(function(){
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td> Angel Ani</td>
-                        <td>04/04/2022</td>
-                        <td>Tree Plantation</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td> Paula Wilson</td>
-                        <td>04/04/2020</td>
-                        <td>Anath AASHRAM</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Antonio Moreno</td>
-                        <td>04/04/2018</td>
-                        <td>Education</td>                       
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Mary Saveley</td>
-                        <td>04/04/2015</td>
-                        <td>Food</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Martin Sommer</td>
-                        <td>04/10/2015</td>
-                        <td>Tree Plantation</td>
-                    </tr>
+                    <?php
+                    $id = 0;
+                    $sql = "SELECT * FROM `donar_master` ORDER BY `ammount` DESC";
+                    $result = mysqli_query($db,$sql);
+                    
+                    if($result){
+                        while($row = mysqli_fetch_assoc($result)){
+                            $id = $id + 1;
+                            $firstName=$row['first_name'];
+                            $lastName=$row['last_name'];
+                            $name = $firstName." ".$lastName;
+                            $created_on=date_create($row['created_on']);
+                            $date = date_format($created_on,"d/m/Y ");
+                            $note=$row['note'];
+                            echo ' <tr>
+                            <th scope="row">'.$id.'</th>
+                            <td>'.$name.'</td>
+                            <td>'.$date.'</td>
+                            <td>'.$note.'</td>
+                            </tr>';
+                            
+                        }
+                    }
+                    ?>
                 </tbody>
             </table>
             

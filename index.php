@@ -1,3 +1,7 @@
+<?php
+include "security/db.php";
+include "valid/check.php";
+?>
 <!DOCTYPE html>
 <html class="no-js">
     <head>
@@ -82,7 +86,7 @@
 
                   </button>
                   
-                  <!-- <a class="navbar-brand" href="index.html"><img src="images/sadaka-logo.png" alt=""></a> -->
+                  <!-- <a class="navbar-brand" href="index.php"><img src="images/sadaka-logo.png" alt=""></a> -->
                   
                 </div>
 
@@ -90,12 +94,12 @@
 
                   <ul class="nav navbar-nav">
 
-                    <li><a class="is-active" href="index.html">HOME</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="topDonator.html">DONORS</a></li>
-                    <li><a href="#">CHECK STATUS</a></li>
-                    <li><a href="gallery.html">GALLERY</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a class="is-active" href="index.php">HOME</a></li>
+                    <li><a href="about.php">ABOUT</a></li>
+                    <li><a href="topDonator.php">DONORS</a></li>
+                    <li><a href="otp.php">CHECK STATUS</a></li>
+                    <li><a href="gallery.php">GALLERY</a></li>
+                    <li><a href="contact.php">CONTACT</a></li>
 
                   </ul>
 
@@ -685,14 +689,14 @@
             <h4 class="modal-title" id="donateModalLabel">DONATE NOW</h4>
           </div>
           <div class="modal-body">
-            <form class="form-donation">
+            <form class="form-donation" method="post" action="index.php">
 
               <h3 class="title-style-1 text-center">Thank you for your donation <span class="title-under"></span>  </h3>
 
               <div class="row">
 
                   <div class="form-group col-md-12 ">
-                      <input type="text" class="form-control" id="amount" placeholder="AMOUNT(€)">
+                      <input type="number" class="form-control" id="amount" placeholder="AMOUNT(€)*" required>
                   </div>
 
               </div>
@@ -700,7 +704,7 @@
               <div class="row">
 
                   <div class="form-group col-md-6">
-                      <input type="text" class="form-control" name="email" placeholder="Email*">
+                      <input type="email" class="form-control" name="email" placeholder="Email*" required>
                   </div>
 
                   <!-- <div class="form-group col-md-6">
@@ -724,15 +728,11 @@
 
               <div class="row">
                   <div class="form-group col-md-12">
-                      <button type="button" class="btn btn-primary pull-right" name="donateNow" data-toggle="modal" data-target="#emailValidate" >NEXT</button>
+                      <!-- <button type="button" class="btn btn-primary pull-right" name="donateNow" data-toggle="modal" data-target="#emailValidate" >NEXT</button> -->
+                      <button type="submit" class="btn btn-primary pull-right" name="donate_Now">NEXT</button>
                   </div>
 
               </div>
-              
-
-
-            
-          
             </form>
           </div>
         </div>
@@ -740,6 +740,66 @@
 
     </div> <!-- /.modal -->
 
+    <!-- REGISTER MODEL -->
+    <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="donateModalLabel" aria-hidden="true">
+
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="donateModalLabel">DONATE NOW</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-donation" method="post" action="index.php">
+
+              <h3 class="title-style-1 text-center">Please fill out this field <span class="title-under"></span>  </h3>
+
+              <div class="row">
+
+                  <div class="form-group col-md-12 ">
+                      <input type="text" class="form-control" id="firstName" placeholder="First Name*" required>
+                  </div>
+                  <div class="form-group col-md-12 ">
+                      <input type="text" class="form-control" id="lastName" placeholder="Last Name*" required>
+                  </div>
+
+              </div>
+
+              <div class="row">
+
+                  <div class="form-group col-md-6">
+                      <input type="email" class="form-control" name="email" placeholder="Email*" required>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                      <input type="text" class="form-control" name="phone" placeholder="Phone">
+                  </div>
+                  
+                  <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="country" placeholder="Country">
+                  </div>
+              </div>
+
+              <div class="row">
+
+                  <div class="form-group col-md-12">
+                      <textarea cols="30" rows="4" class="form-control" name="note" placeholder="Additional note"></textarea>
+                  </div>
+
+              </div>
+
+              <div class="row">
+                  <div class="form-group col-md-12">
+                      <!-- <button type="button" class="btn btn-primary pull-right" name="donateNow" data-toggle="modal" data-target="#emailValidate" >NEXT</button> -->
+                      <button type="submit" class="btn btn-primary pull-right" name="reg">NEXT</button>
+                  </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     
     <!--  Scripts
     ================================================== -->
@@ -769,3 +829,5 @@
 
     </body>
 </html>
+
+
