@@ -1,3 +1,6 @@
+<?php
+include "security/db.php";
+?>
 <! DOCTYPE html>  
 <html lang="en" >  
 <head>  
@@ -56,14 +59,31 @@ font-weight: 300;
             <form method="post" action="otp.php">  
                 <div class="form-group">  
                     <label for="exampleInputEmail1" name="email"> Email </label>  
-                    <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your mail here" name="email">  
-                    <Button type="submit" variant="primary" size="sm" style="float:right;font-size:12px;" name="verefy" onClick="isVerify()"> verefy </Button>
-                </div>  
-                <div class="form-group">  
-                    <label for="exampleInputPassword1"> Enter OTP </label>  
-                    <input type="text" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Check your mail for OTP">  
-                </div>  
-                <button type="submit" class="btn btn-primary btn-block"> Process to pay </button>  
+                    <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your mail here" name="email" required>  
+                    <!-- <Button type="submit" variant="primary" size="sm" style="float:right;font-size:12px;" name="verify"> verefy </Button> -->
+                    <button type="submit" class="btn btn-primary btn-block" name="verify"> Next </button> 
+                    <?php
+                    $otp = rand(11111,99999);
+                    if (isset($_POST['verify'])) {
+                        $email = mysqli_real_escape_string($db, $_POST['email']);
+                        $sql = "SELECT * FROM `donar_master` WHERE `email`='$email'";
+                        $result = mysqli_query($db,$sql);
+                        if(mysqli_num_rows($result) > 0){
+                            while($row = mysqli_fetch_assoc($result)){
+                                $id = $row['id'];
+                                break;
+                            }
+                            
+                            $s="INSERT INTO otp (d_id, otp) 
+                            VALUES('$id', '$otp')";
+                            mysqli_query($db, $s);
+                            header("Location: otpChecker.php?userId='.$id.'");
+                        } else {
+                            header("Location: test1.php");
+                        }
+                    }
+                    ?>
+                </div>   
                 <a href = "index.php" style="text-align: center;">HOME</a>
             </form>  
         </div>  

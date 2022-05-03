@@ -2,8 +2,6 @@
 
 include "security/db.php";
 
-
-
 if (isset($_POST['donate_Now'])) {
     $email = mysqli_real_escape_string($db, $_POST['email']);
     $sql = "SELECT * FROM donar_master WHERE email='$email'";

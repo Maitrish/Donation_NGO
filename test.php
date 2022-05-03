@@ -9,17 +9,20 @@
 </head>
 <body>
     <?php
+    echo "success\n";
     echo "valid email";
-    $to_email = "receipient@gmail.com";
-    $subject = "Simple Email Test via PHP";
-    $body = "Hi, This is test email send by PHP Script";
-    $headers = "From: sender email";
+    // $otp = rand(11111,99999);
+    // echo "\nOtp: ".$otp;
+    // $to_email = "dipankarmalick97@gmail.com";
+    // $subject = "E-Helping Hand Login OTP";
+    // $body = "Hi, This is your one time OTP valid for 5 min.";
+    // $headers = "From: ourproject2022@gmail.com";
 
-    if (mail($to_email, $subject, $body, $headers)) {
-        echo "Email successfully sent to $to_email...";
-    } else {
-        echo "Email sending failed...";
-    }
+    // if (mail($to_email, $subject, $body, $headers)) {
+    //     echo "Email successfully sent to $to_email...";
+    // } else {
+    //     echo "Email sending failed...";
+    // }
 
 
     ?>

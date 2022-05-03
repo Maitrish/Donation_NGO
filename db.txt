@@ -24,3 +24,12 @@ CREATE TABLE ammount(
   created_on datetime default CURRENT_TIMESTAMP,
   FOREIGN KEY (d_id) REFERENCES donar_master(id)
 );
+
+3. OTP table:--
+CREATE TABLE otp(
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL ,
+  d_id INT NOT NULL,
+  otp INT (200) NULL,
+  created_on datetime default CURRENT_TIMESTAMP,
+  FOREIGN KEY (d_id) REFERENCES donar_master(id)
+);
