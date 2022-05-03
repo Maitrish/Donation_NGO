@@ -11,7 +11,7 @@ CREATE TABLE donar_master(
   country VARCHAR (255) NULL,
   address VARCHAR (300) NULL,
   note VARCHAR (350) NULL,
-  ammount VARCHAR (200) NULL,
+  ammount INT (200) NULL,
   created_on datetime default CURRENT_TIMESTAMP
 );
 
@@ -20,7 +20,7 @@ CREATE TABLE donar_master(
 CREATE TABLE ammount(
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL ,
   d_id INT NOT NULL,
-  ammount VARCHAR (200) NULL,
+  ammount INT (200) NULL,
   created_on datetime default CURRENT_TIMESTAMP,
   FOREIGN KEY (d_id) REFERENCES donar_master(id)
 );
