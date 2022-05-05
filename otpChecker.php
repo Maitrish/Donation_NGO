@@ -1,5 +1,5 @@
 <?php
-include "security/db.php";
+include "valid/check.php";
 ?>
 <! DOCTYPE html>  
 <html lang="en" >  
@@ -65,14 +65,11 @@ font-weight: 300;
                 <button type="submit" class="btn btn-primary btn-block" name="validate"> Process to pay </button> 
                 <?php
                 $id=0;
+                $errors = array(); 
                 if(isset($_GET['userId'])){
-                    $id=$_GET['userId'];
+                    global $id;
+                    $id = $_GET['userId'];
                     echo "<script>console.log('Get Id is: " . $id . "');</script>";
-                }
-                if(isset($_GET['userId']) && isset($_POST['validate'])){
-                    $id=$_GET['userId'];
-                    echo "<script>console.log('Get Id is: " . $id . "');</script>";
-                    $otpInput = mysqli_real_escape_string($db, $_POST['otpInput']);
                     $sql = "SELECT * FROM `donar_master` WHERE `id`=$id";
                     $result=mysqli_query($db,$sql);
                     if(mysqli_num_rows($result) > 0){
@@ -81,29 +78,10 @@ font-weight: 300;
                             echo "<script>console.log('Otp is: " . $otp . "' );</script>";
                         }
                     }
-                    if ($otpInput==$otp) {
-                        echo "<script>alert('Otp Matched' );</script>";
-                        header("Location: test.php");
-                    }
-                    else {
-                        echo "<script>alert('Otp Not Matched' );</script>";
-                        header("Location: test1.php");
-                    }
                 }
+
                 
-                
-                
-                // if (isset($_POST['validate'])) {
-                    
-                //     if ($otpInput==$otp) {
-                //         echo "<script>alert('Otp Matched' );</script>";
-                //         header("Location: test.php");
-                //     }
-                //     else {
-                //         echo "<script>alert('Otp Not Matched' );</script>";
-                //         header("Location: test1.php");
-                //     }
-                // }
+            
                 ?> 
                 <a href = "index.php" style="text-align: center;">HOME</a>
             </form>  
