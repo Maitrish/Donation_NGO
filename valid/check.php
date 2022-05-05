@@ -1,5 +1,7 @@
 <?php
 
+
+
 include "security/db.php";
 
 if (isset($_POST['donate_Now'])) {
@@ -15,6 +17,8 @@ if (isset($_POST['donate_Now'])) {
         header("Location: test1.php");
     }
 }
+
+
 
 if (isset($_POST['reg'])) {
     // $email = mysqli_real_escape_string($db, $_POST['email']);

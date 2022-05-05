@@ -23,7 +23,10 @@ CREATE TABLE ammount(
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL ,
   d_id INT NOT NULL,
   ammount INT (200) NULL,
+  note VARCHAR (350) NULL,
   created_on datetime default CURRENT_TIMESTAMP,
   FOREIGN KEY (d_id) REFERENCES donar_master(id)
 );
+
+
 
