@@ -14,7 +14,7 @@ if (isset($_POST['donate_Now'])) {
         header("Location: test.php");
     }
     else {
-        header("Location: test1.php");
+        header("Location: newUser.php");
     }
 }
 
