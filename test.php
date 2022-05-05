@@ -10,7 +10,7 @@
 <body>
     <?php
     echo "success\n";
-    echo "valid email";
+    
     // $otp = rand(11111,99999);
     // echo "\nOtp: ".$otp;
     // $to_email = "dipankarmalick97@gmail.com";

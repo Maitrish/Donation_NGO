@@ -2,6 +2,8 @@
 include "security/db.php";
 
 $errors = array(); 
+
+//  Email Validation 
 if (isset($_POST['donate_Now'])) {
     $email = mysqli_real_escape_string($db, $_POST['email']);
     $sql = "SELECT * FROM donar_master WHERE email='$email'";
@@ -16,25 +18,36 @@ if (isset($_POST['donate_Now'])) {
     }
 }
 
-// Sending OTP
-if (isset($_POST['validate'])) {
-    $otpInput = mysqli_real_escape_string($db, $_POST['otpInput']);
-
-    if (count($errors) == 0) {
-        $query = "SELECT * FROM `donar_master` WHERE `id`=$id AND `otp`=$otpInput";
-        $results = mysqli_query($db, $query);
-
-        if (mysqli_num_rows($results) == 1) {
-            
-            header('location: test.php');
-        }else {
-            array_push($errors, "Wrong OTP");
-            header('location: test1.php');
-        }
-    }
-}
 
 //  Validate OTP
+// if (isset($_POST['validate'])) {
+//     require_once "otpChecker.php";
+//     if($id>0){
+        
+//         echo "<script>console.log('Get Id is: " . $id . "');</script>";
+//     }
+//     else {
+//         echo "<script>console.log('Get Id not found!');</script>";
+//     }
+    
+//     $otpInput = mysqli_real_escape_string($db, $_POST['otpInput']);
+
+//     if (count($errors) == 0) {
+//         $query = "SELECT * FROM `donar_master` WHERE `id`=$id AND `otp`=$otpInput";
+//         $results = mysqli_query($db, $query);
+
+//         if (mysqli_num_rows($results) == 1) {
+            
+//             header('location: test.php');
+//         }else {
+//             array_push($errors, "Wrong OTP");
+//             header('location: test1.php');
+//         }
+//     }
+// }
+
+
+// Sending OTP
 if (isset($_POST['verify'])) {
     $otp = rand(11111,99999);
     $email = mysqli_real_escape_string($db, $_POST['email']);
@@ -52,20 +65,6 @@ if (isset($_POST['verify'])) {
     } else {
         header("Location: test1.php");
     }
-}
-
-if (isset($_POST['reg'])) {
-    // $email = mysqli_real_escape_string($db, $_POST['email']);
-    // $sql = "SELECT * FROM donar_master WHERE email='$email'";
-    // if ($result=mysqli_query($db,$sql)) {
-    //     $rowcount=mysqli_num_rows($result);
-    // }
-    // if ($rowcount>=1) {
-    //     header("Location: test.php");
-    // }
-    // else {
-    //     header("Location: test1.php");
-    // }
 }
 
 ?>

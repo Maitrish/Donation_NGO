@@ -1,5 +1,6 @@
 <?php
-include "valid/check.php";
+include "security/db.php";
+
 ?>
 <! DOCTYPE html>  
 <html lang="en" >  
@@ -62,27 +63,48 @@ font-weight: 300;
                     <label for="exampleInputPassword1"> Enter OTP </label>  
                     <input type="number" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Check your mail for OTP" name="otpInput">  
                 </div>  
-                <button type="submit" class="btn btn-primary btn-block" name="validate"> Process to pay </button> 
+                <button type="submit" class="btn btn-primary btn-block" name="validate"> Process to pay </button>  
                 <?php
-                $id=0;
-                $errors = array(); 
                 if(isset($_GET['userId'])){
-                    global $id;
-                    $id = $_GET['userId'];
-                    echo "<script>console.log('Get Id is: " . $id . "');</script>";
-                    $sql = "SELECT * FROM `donar_master` WHERE `id`=$id";
-                    $result=mysqli_query($db,$sql);
-                    if(mysqli_num_rows($result) > 0){
-                        while($row = mysqli_fetch_assoc($result)){
-                            $otp = $row['otp'];
-                            echo "<script>console.log('Otp is: " . $otp . "' );</script>";
+                    $id=$_GET['userId'];
+                    echo "<script>alert('Id is: " . $id . "' );</script>";
+                }
+                $sql = "SELECT * FROM `donar_master` WHERE `id`=$id";
+                $result=mysqli_query($db,$sql);
+                if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $otp = $row['otp'];
+                        echo "<script>console.log('Otp is: " . $otp . "' );</script>";
+                        break;
+                    }
+                }
+                if (isset($_POST['validate'])) {
+                    
+                    if($id>0){
+                        
+                        echo "<script>console.log('Get Id is: " . $id . "');</script>";
+                    }
+                    else {
+                        echo "<script>console.log('Get Id not found!');</script>";
+                    }
+                    
+                    $otpInput = mysqli_real_escape_string($db, $_POST['otpInput']);
+                
+                    if (count($errors) == 0) {
+                        $query = "SELECT * FROM `donar_master` WHERE `id`=$id AND `otp`=$otpInput";
+                        $results = mysqli_query($db, $query);
+                
+                        if (mysqli_num_rows($results) == 1) {
+                            
+                            header('location: test.php');
+                        }else {
+                            array_push($errors, "Wrong OTP");
+                            header('location: test1.php');
                         }
                     }
                 }
-
                 
-            
-                ?> 
+                ?>
                 <a href = "index.php" style="text-align: center;">HOME</a>
             </form>  
         </div>  
