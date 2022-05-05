@@ -1,5 +1,5 @@
 <?php
-include "security/db.php";
+include "valid/check.php";
 ?>
 <! DOCTYPE html>  
 <html lang="en" >  
@@ -60,30 +60,7 @@ font-weight: 300;
                 <div class="form-group">  
                     <label for="exampleInputEmail1" name="email"> Email </label>  
                     <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your mail here" name="email" required>  
-                    <!-- <Button type="submit" variant="primary" size="sm" style="float:right;font-size:12px;" name="verify"> verefy </Button> -->
                     <button type="submit" class="btn btn-primary btn-block" name="verify"> Next </button> 
-                    <?php
-                    
-                    $id=0;
-                    $otp = rand(11111,99999);
-                    if (isset($_POST['verify'])) {
-                        $email = mysqli_real_escape_string($db, $_POST['email']);
-                        $sql = "SELECT * FROM `donar_master` WHERE `email`='$email'";
-                        $result = mysqli_query($db,$sql);
-                        if(mysqli_num_rows($result) > 0){
-                            while($row = mysqli_fetch_assoc($result)){
-                                $id = $row['id'];
-                                echo "<script>console.log('Id is: " . $id . "' );</script>";
-                            }
-                            $otp = rand(11111,99999);
-                            $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
-                            mysqli_query($db, $s);
-                            header("Location: otpChecker.php?userId=$id");
-                        } else {
-                            header("Location: test1.php");
-                        }
-                    }
-                    ?>
                 </div>   
                 <a href = "index.php" style="text-align: center;">HOME</a>
             </form>  
