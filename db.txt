@@ -12,6 +12,8 @@ CREATE TABLE donar_master(
   address VARCHAR (300) NULL,
   note VARCHAR (350) NULL,
   ammount INT (200) NULL,
+  otp VARCHAR (200) NULL,
+  is_verified VARCHAR (20) NOT NULL,
   created_on datetime default CURRENT_TIMESTAMP
 );
 
@@ -25,11 +27,3 @@ CREATE TABLE ammount(
   FOREIGN KEY (d_id) REFERENCES donar_master(id)
 );
 
-3. OTP table:--
-CREATE TABLE otp(
-  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL ,
-  d_id INT NOT NULL,
-  otp INT (200) NULL,
-  created_on datetime default CURRENT_TIMESTAMP,
-  FOREIGN KEY (d_id) REFERENCES donar_master(id)
-);

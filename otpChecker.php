@@ -50,6 +50,7 @@ font-weight: 300;
 }  
 </style>  
 <body>  
+
 <div class="pt-5">  
   <div class="global-container">  
     <div class="card login-form">  
@@ -59,25 +60,28 @@ font-weight: 300;
             <form method="post" action="otpChecker.php">    
                 <div class="form-group">  
                     <label for="exampleInputPassword1"> Enter OTP </label>  
-                    <input type="text" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Check your mail for OTP" name="otpInput">  
+                    <input type="number" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Check your mail for OTP" name="otpInput">  
                 </div>  
                 <button type="submit" class="btn btn-primary btn-block" name="validate"> Process to pay </button> 
                 <?php
-                
+                $id=0;
                 if(isset($_GET['userId'])){
                     $id=$_GET['userId'];
-                    echo "<script>alert('Id is: " . $id . "' );</script>";
+                    echo "<script>console.log('Get Id is: " . $id . "');</script>";
                 }
-                
-                if (isset($_POST['validate'])) {
+                if(isset($_GET['userId']) && isset($_POST['validate'])){
+                    $id=$_GET['userId'];
+                    echo "<script>console.log('Get Id is: " . $id . "');</script>";
                     $otpInput = mysqli_real_escape_string($db, $_POST['otpInput']);
-                    $sql = "SELECT * FROM `otp` WHERE `d_id`='.$id.' AND `otp`='.$otpInput.'";
+                    $sql = "SELECT * FROM `donar_master` WHERE `id`=$id";
                     $result=mysqli_query($db,$sql);
-                    $row = mysqli_fetch_assoc($result);
-                    $otp=$row['otp'];
-                    echo "<script>alert('Otp is: " . $otp . "' );</script>";
-            
-                    if (mysqli_num_rows($result) > 0) {
+                    if(mysqli_num_rows($result) > 0){
+                        while($row = mysqli_fetch_assoc($result)){
+                            $otp = $row['otp'];
+                            echo "<script>console.log('Otp is: " . $otp . "' );</script>";
+                        }
+                    }
+                    if ($otpInput==$otp) {
                         echo "<script>alert('Otp Matched' );</script>";
                         header("Location: test.php");
                     }
@@ -86,6 +90,20 @@ font-weight: 300;
                         header("Location: test1.php");
                     }
                 }
+                
+                
+                
+                // if (isset($_POST['validate'])) {
+                    
+                //     if ($otpInput==$otp) {
+                //         echo "<script>alert('Otp Matched' );</script>";
+                //         header("Location: test.php");
+                //     }
+                //     else {
+                //         echo "<script>alert('Otp Not Matched' );</script>";
+                //         header("Location: test1.php");
+                //     }
+                // }
                 ?> 
                 <a href = "index.php" style="text-align: center;">HOME</a>
             </form>  

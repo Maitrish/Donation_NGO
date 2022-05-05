@@ -63,6 +63,8 @@ font-weight: 300;
                     <!-- <Button type="submit" variant="primary" size="sm" style="float:right;font-size:12px;" name="verify"> verefy </Button> -->
                     <button type="submit" class="btn btn-primary btn-block" name="verify"> Next </button> 
                     <?php
+                    
+                    $id=0;
                     $otp = rand(11111,99999);
                     if (isset($_POST['verify'])) {
                         $email = mysqli_real_escape_string($db, $_POST['email']);
@@ -71,13 +73,12 @@ font-weight: 300;
                         if(mysqli_num_rows($result) > 0){
                             while($row = mysqli_fetch_assoc($result)){
                                 $id = $row['id'];
-                                break;
+                                echo "<script>console.log('Id is: " . $id . "' );</script>";
                             }
-                            
-                            $s="INSERT INTO otp (d_id, otp) 
-                            VALUES('$id', '$otp')";
+                            $otp = rand(11111,99999);
+                            $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
                             mysqli_query($db, $s);
-                            header("Location: otpChecker.php?userId='.$id.'");
+                            header("Location: otpChecker.php?userId=$id");
                         } else {
                             header("Location: test1.php");
                         }
