@@ -1,19 +1,48 @@
 <?php
 include "security/db.php";
 include "security/constant.php";
-$errors = array(); 
+
 
 //  Email Validation 
 if (isset($_POST['donate_Now'])) {
+    $flag = 0;
+    $totalAmmount = 0;
     $email = mysqli_real_escape_string($db, $_POST['email']);
+    $ammount = mysqli_real_escape_string($db, $_POST['ammount']);
+    $noteNew = mysqli_real_escape_string($db, $_POST['note']);
     $sql = "SELECT * FROM donar_master WHERE email='$email'";
     if ($result=mysqli_query($db,$sql)) {
         $rowcount=mysqli_num_rows($result);
     }
     if ($rowcount>=1) {
-        header("Location: test.php");
+        $flag = 1;
+        // header("Location: test.php");
     }
     else {
+        $flag = 0;
+        // header("Location: newUser.php");
+    }
+    // For old user
+    if($flag == 1){
+        $sql = "SELECT * FROM `donar_master` WHERE `email`='$email'";
+        $result = mysqli_query($db,$sql);
+        if(mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $id = $row['id'];
+                $amm = $row['ammount'];
+                break;
+            }
+            $qAmmount = "INSERT INTO `ammount` (d_id, ammount, note) 
+					  VALUES('$id','$ammount', '$noteNew')";
+            mysqli_query($db, $qAmmount);
+            $totalAmmount = $amm + $ammount;
+            $otp = rand(11111,99999);
+            $s="UPDATE `donar_master` SET `note`='$noteNew',`ammount`=$totalAmmount,`otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
+            mysqli_query($db, $s);
+	        
+            header("Location: otpChecker.php?userId=$id");
+        }
+    } else {
         header("Location: newUser.php");
     }
 }
@@ -27,7 +56,7 @@ if (isset($_POST['verify'])) {
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
             $id = $row['id'];
-            echo "<script>console.log('Id is: " . $id . "' );</script>";
+            break;
         }
         $otp = rand(11111,99999);
         $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
@@ -41,6 +70,7 @@ if (isset($_POST['verify'])) {
 //  Register new user
 if (isset($_POST['reg'])) {
     // receive all input values from the form
+    $flag = 0;
     $first_name = mysqli_real_escape_string($db, $_POST['first_name']);
     $last_name = mysqli_real_escape_string($db, $_POST['last_name']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
@@ -55,7 +85,6 @@ if (isset($_POST['reg'])) {
     $q = "SELECT * FROM `donar_master` WHERE email='$email'";
     $res = mysqli_query($db, $q);
     if (mysqli_num_rows($res) > 0) {
-        $errors['email'] = "Email already taken";
         echo "<script>alert('Email aleady taken!');</script>";
         header("Location: newUser.php");
     } else {
@@ -63,7 +92,31 @@ if (isset($_POST['reg'])) {
 					  VALUES('$first_name','$last_name', '$email', '$phone', '$country', '$address', '$note', $ammount, '$otp', '$is_verified')";
 	    mysqli_query($db, $query);
         
-        header("Location: test.php");
+        
+        $flag = 1;  
+    }
+    // If all data is new
+    if($flag == 1){
+        $sql = "SELECT * FROM `donar_master` WHERE `email`='$email'";
+        $result = mysqli_query($db,$sql);
+        if(mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $id = $row['id'];
+                $amm = $row['ammount'];
+                $no = $row['note'];
+                break;
+            }
+            $qAmmount = "INSERT INTO `ammount` (d_id, ammount, note) 
+					  VALUES('$id','$amm', '$no')";
+	        mysqli_query($db, $qAmmount);
+            $otp = rand(11111,99999);
+            $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
+            mysqli_query($db, $s);
+
+            header("Location: otpChecker.php?userId=$id");
+        }
+    } else {
+        header("Location: newUser.php");
     }
 }
 

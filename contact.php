@@ -363,7 +363,7 @@
               <div class="row">
 
                   <div class="form-group col-md-12 ">
-                      <input type="number" class="form-control" id="amount" placeholder="AMOUNT(€)*" required>
+                      <input type="number" class="form-control" id="ammount" name="ammount" placeholder="AMOUNT(€)*" required>
                   </div>
 
               </div>
@@ -379,9 +379,9 @@
                   </div> -->
                   
 
-                  <div class="form-group col-md-6">
+                  <!-- <div class="form-group col-md-6">
                       <input type="text" class="form-control" name="phone" placeholder="Phone">
-                  </div>
+                  </div> -->
 
               </div>
 
