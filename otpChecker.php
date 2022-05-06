@@ -88,7 +88,7 @@ font-weight: 300;
                         otpInput = document.getElementById('exampleInputPassword1').value;
                         
                         if(otp == otpInput){
-                            window.location.href = 'test.php'; 
+                            window.location.href = 'userStatus.php?userId=$id'; 
                         }
                         else{
                             window.location.href = 'test1.php';
