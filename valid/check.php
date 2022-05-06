@@ -90,7 +90,7 @@ if (isset($_POST['reg'])) {
         header("Location: newUser.php");
     } else {
         $query = "INSERT INTO `donar_master` (first_name, last_name, email, phone, country, address, note, ammount, otp, is_verified) 
-					  VALUES('$first_name','$last_name', '$email', '$phone', '$country', '$address', '$note', '$ammount', '$otp', '$is_verified')";
+					  VALUES('$first_name','$last_name', '$email', '$phone', '$country', '$address', '$note', $ammount, '$otp', '$is_verified')";
 	    mysqli_query($db, $query);
         
         header("Location: test.php");
