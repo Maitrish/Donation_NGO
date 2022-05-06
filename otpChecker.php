@@ -66,42 +66,39 @@ font-weight: 300;
                 <button type="submit" class="btn btn-primary btn-block" name="validate"> Process to pay </button>  
                 <?php
                 if(isset($_GET['userId'])){
-                    $id=$_GET['userId'];
-                    echo "<script>alert('Id is: " . $id . "' );</script>";
+                    $id = $_GET['userId'];
                 }
-                $sql = "SELECT * FROM `donar_master` WHERE `id`=$id";
-                $result=mysqli_query($db,$sql);
-                if(mysqli_num_rows($result) > 0){
-                    while($row = mysqli_fetch_assoc($result)){
-                        $otp = $row['otp'];
-                        echo "<script>console.log('Otp is: " . $otp . "' );</script>";
-                        break;
-                    }
-                }
-                if (isset($_POST['validate'])) {
-                    
-                    if($id>0){
-                        
-                        echo "<script>console.log('Get Id is: " . $id . "');</script>";
-                    }
-                    else {
-                        echo "<script>console.log('Get Id not found!');</script>";
-                    }
+                $otp = rand(11111,99999);
+                echo "<script>console.log('Otp is: " . $otp . "' );</script>";
+                $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
+                mysqli_query($db, $s);
+                echo "<script>console.log('Otp update on db' );</script>";
+                function check(){
                     
                     $otpInput = mysqli_real_escape_string($db, $_POST['otpInput']);
-                
-                    if (count($errors) == 0) {
-                        $query = "SELECT * FROM `donar_master` WHERE `id`=$id AND `otp`=$otpInput";
-                        $results = mysqli_query($db, $query);
-                
-                        if (mysqli_num_rows($results) == 1) {
-                            
-                            header('location: test.php');
-                        }else {
-                            array_push($errors, "Wrong OTP");
-                            header('location: test1.php');
-                        }
+                    if($otpInput==$otp){
+                        header("Location: test.php");
+                    } else {
+                        header("Location: test1.php");
                     }
+        
+                }
+
+                if (isset($_POST['validate'])) {
+                    check();
+                    
+                    
+                    // $query = "SELECT * FROM `donar_master` WHERE `otp`=$otpInput";
+
+                    // if ($result=mysqli_query($db,$sql)) {
+                    //     $rowcount=mysqli_num_rows($result);
+                    // }
+                    // if ($rowcount>=1) {
+                    //     header("Location: test.php");
+                    // }
+                    // else {
+                    //     header("Location: test1.php");
+                    // }
                 }
                 
                 ?>
