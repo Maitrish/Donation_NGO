@@ -204,6 +204,9 @@ $(document).ready(function(){
                         while($row = mysqli_fetch_assoc($result)){
                             $firstName = $row['first_name'];
                             $lastName = $row['last_name'];
+                            $phone = $row['phone'];
+                            $address = $row['address'];
+                            $country = $row['country'];
                             $ammount = $row['ammount'];
                             break;
                         }
@@ -219,7 +222,10 @@ $(document).ready(function(){
                 <thead>
                     <tr>
                         <th>Sl No</th>
-                        <th>Name</th>	
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Location</th>
+                        <th>Country</th>
                         <th>Transaction Date</th>
                         <th>Transaction Time</th>			
                         <th>Transaction Ammount</th>
@@ -244,6 +250,9 @@ $(document).ready(function(){
                             echo ' <tr>
                             <th scope="row">'.$slId.'</th>
                             <td>'.$name.'</td>
+                            <td>'.$phone.'</td>
+                            <td>'.$address.'</td>
+                            <td>'.$country.'</td>
                             <td>'.$date.'</td>
                             <td>'.$time.'</td>
                             <td>'.$ammount.'</td>
