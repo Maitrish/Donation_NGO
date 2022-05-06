@@ -11,8 +11,6 @@
     <?php
     echo "success\n";
     
-    // $otp = rand(11111,99999);
-    // echo "\nOtp: ".$otp;
     // $to_email = "dipankarmalick97@gmail.com";
     // $subject = "E-Helping Hand Login OTP";
     // $body = "Hi, This is your one time OTP valid for 5 min.";

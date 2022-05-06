@@ -1,6 +1,6 @@
 <?php
 include "security/db.php";
-
+include "security/constant.php";
 ?>
 <! DOCTYPE html>  
 <html lang="en" >  
@@ -58,50 +58,47 @@ font-weight: 300;
     <div class="card-body">  
         <h3 class="card-title text-center"> Please Verify your email </h3>  
         <div class="card-text">  
-            <form method="post" action="otpChecker.php">    
+            <form method="post" action="otpChecker.php"> 
+              
                 <div class="form-group">  
                     <label for="exampleInputPassword1"> Enter OTP </label>  
-                    <input type="number" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Check your mail for OTP" name="otpInput">  
+                    <input type="number" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Check your mail for OTP" name="otpInput" required>  
                 </div>  
-                <button type="submit" class="btn btn-primary btn-block" name="validate"> Process to pay </button>  
+                <button type="button" class="btn btn-primary btn-block" onClick="checkOtp()" name="validate"> Process to pay </button>  
                 <?php
+                $flag = 0;
                 if(isset($_GET['userId'])){
                     $id = $_GET['userId'];
-                }
-                $otp = rand(11111,99999);
-                echo "<script>console.log('Otp is: " . $otp . "' );</script>";
-                $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
-                mysqli_query($db, $s);
-                echo "<script>console.log('Otp update on db' );</script>";
-                function check(){
                     
-                    $otpInput = mysqli_real_escape_string($db, $_POST['otpInput']);
-                    if($otpInput==$otp){
-                        header("Location: test.php");
-                    } else {
-                        header("Location: test1.php");
+                    $sql = "SELECT * FROM `donar_master` WHERE `id`=$id";
+                    $result = mysqli_query($db,$sql);
+                    if($result){
+                        while($row = mysqli_fetch_assoc($result)){
+                            $otp=(string)$row['otp'];
+                            break;
+                        }
                     }
-        
+                    echo "<script>var id = $id;
+                    var otp = $otp;
+                    var verified = 'N';
+                    console.log('Id is : ' + id);
+                    console.log('OTP is : ' + otp);
+                    function checkOtp(){
+                        var otpInput = 0;
+                        otpInput = document.getElementById('exampleInputPassword1').value;
+                        
+                        if(otp == otpInput){
+                            window.location.href = 'test.php'; 
+                        }
+                        else{
+                            window.location.href = 'test1.php';
+                        }
+                    }
+                    </script>";
                 }
-
-                if (isset($_POST['validate'])) {
-                    check();
-                    
-                    
-                    // $query = "SELECT * FROM `donar_master` WHERE `otp`=$otpInput";
-
-                    // if ($result=mysqli_query($db,$sql)) {
-                    //     $rowcount=mysqli_num_rows($result);
-                    // }
-                    // if ($rowcount>=1) {
-                    //     header("Location: test.php");
-                    // }
-                    // else {
-                    //     header("Location: test1.php");
-                    // }
-                }
-                
                 ?>
+                
+                
                 <a href = "index.php" style="text-align: center;">HOME</a>
             </form>  
         </div>  

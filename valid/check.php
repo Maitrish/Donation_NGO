@@ -1,6 +1,6 @@
 <?php
 include "security/db.php";
-
+include "security/constant.php";
 $errors = array(); 
 
 //  Email Validation 
@@ -18,36 +18,7 @@ if (isset($_POST['donate_Now'])) {
     }
 }
 
-
-//  Validate OTP
-// if (isset($_POST['validate'])) {
-//     require_once "otpChecker.php";
-//     if($id>0){
-        
-//         echo "<script>console.log('Get Id is: " . $id . "');</script>";
-//     }
-//     else {
-//         echo "<script>console.log('Get Id not found!');</script>";
-//     }
-    
-//     $otpInput = mysqli_real_escape_string($db, $_POST['otpInput']);
-
-//     if (count($errors) == 0) {
-//         $query = "SELECT * FROM `donar_master` WHERE `id`=$id AND `otp`=$otpInput";
-//         $results = mysqli_query($db, $query);
-
-//         if (mysqli_num_rows($results) == 1) {
-            
-//             header('location: test.php');
-//         }else {
-//             array_push($errors, "Wrong OTP");
-//             header('location: test1.php');
-//         }
-//     }
-// }
-
-
-// Check Email for Sending OTP
+// Sending OTP
 if (isset($_POST['verify'])) {
     
     $email = mysqli_real_escape_string($db, $_POST['email']);
@@ -58,10 +29,9 @@ if (isset($_POST['verify'])) {
             $id = $row['id'];
             echo "<script>console.log('Id is: " . $id . "' );</script>";
         }
-        // $otp = rand(11111,99999);
-        // $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
-        // mysqli_query($db, $s);
-        // header("Location: otpChecker.php?userId=$id");
+        $otp = rand(11111,99999);
+        $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
+        mysqli_query($db, $s);
         header("Location: otpChecker.php?userId=$id");
     } else {
         header("Location: test1.php");

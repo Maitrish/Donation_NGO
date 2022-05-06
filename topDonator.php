@@ -1,5 +1,6 @@
 <?php 
 include "security/db.php";
+include "security/constant.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
