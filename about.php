@@ -2,7 +2,7 @@
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>About | Charity / Non-profit responsive Bootstrap HTML5 template</title>
+        <title>About | Charity </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -80,7 +80,7 @@
 
                   </button>
                   
-                  <a class="navbar-brand" href="index.php"><img src="images/sadaka-logo.png" alt=""></a>
+                  <a class="navbar-brand" href="about.php"><img src="images/e-logo.png" alt=""></a>
                   
                 </div>
 

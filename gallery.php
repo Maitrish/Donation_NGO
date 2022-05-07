@@ -85,7 +85,7 @@
 
                   </button>
                   
-                  <a class="navbar-brand" href="index.php"><img src="images/sadaka-logo.png" alt=""></a>
+                  <a class="navbar-brand" href="gallery.php"><img src="images/e-logo.png" alt=""></a>
                   
                 </div>
 

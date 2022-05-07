@@ -6,7 +6,7 @@ include "valid/check.php";
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>E-Helping hand | Charity</title>
+        <title>E-Helping Hand | Charity</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Fonts -->
@@ -86,7 +86,7 @@ include "valid/check.php";
 
                   </button>
                   
-                  <!-- <a class="navbar-brand" href="index.php"><img src="images/sadaka-logo.png" alt=""></a> -->
+                  <a class="navbar-brand" href="index.php"><img src="images/e-logo.png" alt=""></a>
                   
                 </div>
 
