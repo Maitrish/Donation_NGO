@@ -204,7 +204,6 @@ $(document).ready(function(){
                         while($row = mysqli_fetch_assoc($result)){
                             $firstName = $row['first_name'];
                             $lastName = $row['last_name'];
-                            $phone = $row['phone'];
                             $address = $row['address'];
                             $country = $row['country'];
                             $ammount = $row['ammount'];
@@ -245,8 +244,9 @@ $(document).ready(function(){
                             $created_on=date_create($row['created_on']);
                             $date = date_format($created_on,"d/m/Y");
                             $time = date_format($created_on,"H:i:s");
-                            $ammount = $row['ammount'];
+                            $amm = $row['ammount'];
                             $note = $row['note'];
+                            $phone = $row['phone'];
                             echo ' <tr>
                             <th scope="row">'.$slId.'</th>
                             <td>'.$name.'</td>
@@ -255,7 +255,7 @@ $(document).ready(function(){
                             <td>'.$country.'</td>
                             <td>'.$date.'</td>
                             <td>'.$time.'</td>
-                            <td>'.$ammount.'</td>
+                            <td>'.$amm.'</td>
                             <td>'.$note.'</td>
                             </tr>';
                             
