@@ -183,6 +183,12 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>E-Helping-Hand</h1>     
+    <p>TOGETHER WE CAN IMPROVE</p>
+  </div>
+</div>
 <div class="container-xl">
     <div class="table-responsive">
         <div class="table-wrapper">
