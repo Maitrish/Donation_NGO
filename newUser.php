@@ -1,5 +1,6 @@
 <?php
 include "valid/check.php";
+include "security/co.inc";
 ?>
 <!DOCTYPE html>
 <html lang="en">

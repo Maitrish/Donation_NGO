@@ -40,10 +40,11 @@ if (isset($_POST['donate_Now'])) {
             $otp = rand(11111,99999);
             $s="UPDATE `donar_master` SET `phone`='$phone' , `note`='$noteNew',`ammount`=$totalAmmount,`otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
             mysqli_query($db, $s);
-	        
+	        $_SESSION["login"] = "OK";
             header("Location: otpCheckerDonation.php?userId=$id");
         }
     } else {
+        $_SESSION["login"] = "OK";
         header("Location: newUser.php");
     }
 }
@@ -62,6 +63,7 @@ if (isset($_POST['verify'])) {
         $otp = rand(11111,99999);
         $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
         mysqli_query($db, $s);
+        $_SESSION["login"] = "OK";
         header("Location: otpChecker.php?userId=$id");
     } else {
         header("Location: test1.php");

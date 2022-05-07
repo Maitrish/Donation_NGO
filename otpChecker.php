@@ -1,6 +1,7 @@
 <?php
 include "security/db.php";
 include "security/constant.php";
+include "security/co.inc";
 ?>
 <! DOCTYPE html>  
 <html lang="en" >  
@@ -88,7 +89,7 @@ font-weight: 300;
                         otpInput = document.getElementById('exampleInputPassword1').value;
                         
                         if(otp == otpInput){
-                            window.location.href = 'userStatus.php?userId=$id'; 
+                            sessionCheck();
                         }
                         else{
                             window.location.href = 'test1.php';
@@ -97,7 +98,14 @@ font-weight: 300;
                     </script>";
                 }
                 ?>
-                
+                <script>
+                    function sessionCheck(){
+                        <?php 
+                        $_SESSION["login"] = "OK"; 
+                        echo "window.location.href = 'userStatus.php?userId=$id';";
+                        ?>
+                    }
+                </script>
                 
                 <a href = "index.php" style="text-align: center;">HOME</a>
             </form>  

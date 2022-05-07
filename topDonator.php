@@ -197,8 +197,8 @@ $(document).ready(function(){
                 <thead>
                     <tr>
                         <th>Ranking</th>
-                        <th>Name</th>	
-                        <th>Date</th>			
+                        <th>Donar Name</th>	
+                        <th>Donation Date</th>			
                         <th>Donate For</th>		
                     </tr>
                 </thead>

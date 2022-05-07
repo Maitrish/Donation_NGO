@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include "constant.php";
 $host = "localhost";
 $username = "root";
