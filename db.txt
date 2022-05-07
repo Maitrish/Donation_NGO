@@ -22,6 +22,7 @@ CREATE TABLE donar_master(
 CREATE TABLE ammount(
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL ,
   d_id INT NOT NULL,
+  phone VARCHAR (255) NULL,
   ammount INT (200) NULL,
   note VARCHAR (350) NULL,
   created_on datetime default CURRENT_TIMESTAMP,

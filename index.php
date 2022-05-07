@@ -713,9 +713,9 @@ include "valid/check.php";
                   </div> -->
                   
 
-                  <!-- <div class="form-group col-md-6">
-                      <input type="text" class="form-control" name="phone" placeholder="Phone">
-                  </div> -->
+                  <div class="form-group col-md-6">
+                    <input type="number" class="form-control" name="phone" placeholder="Phone*" required>
+                  </div>
 
               </div>
 

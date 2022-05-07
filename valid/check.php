@@ -8,6 +8,7 @@ if (isset($_POST['donate_Now'])) {
     $flag = 0;
     $totalAmmount = 0;
     $email = mysqli_real_escape_string($db, $_POST['email']);
+    $phone = mysqli_real_escape_string($db, $_POST['phone']);
     $ammount = mysqli_real_escape_string($db, $_POST['ammount']);
     $noteNew = mysqli_real_escape_string($db, $_POST['note']);
     $sql = "SELECT * FROM donar_master WHERE email='$email'";
@@ -32,15 +33,15 @@ if (isset($_POST['donate_Now'])) {
                 $amm = $row['ammount'];
                 break;
             }
-            $qAmmount = "INSERT INTO `ammount` (d_id, ammount, note) 
-					  VALUES('$id','$ammount', '$noteNew')";
+            $qAmmount = "INSERT INTO `ammount` (d_id, phone, ammount, note) 
+					  VALUES('$id','$phone','$ammount', '$noteNew')";
             mysqli_query($db, $qAmmount);
             $totalAmmount = $amm + $ammount;
             $otp = rand(11111,99999);
-            $s="UPDATE `donar_master` SET `note`='$noteNew',`ammount`=$totalAmmount,`otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
+            $s="UPDATE `donar_master` SET `phone`='$phone' , `note`='$noteNew',`ammount`=$totalAmmount,`otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
             mysqli_query($db, $s);
 	        
-            header("Location: otpChecker.php?userId=$id");
+            header("Location: otpCheckerDonation.php?userId=$id");
         }
     } else {
         header("Location: newUser.php");
@@ -106,14 +107,14 @@ if (isset($_POST['reg'])) {
                 $no = $row['note'];
                 break;
             }
-            $qAmmount = "INSERT INTO `ammount` (d_id, ammount, note) 
-					  VALUES('$id','$amm', '$no')";
+            $qAmmount = "INSERT INTO `ammount` (d_id, phone, ammount, note) 
+					  VALUES('$id','$phone','$amm', '$no')";
 	        mysqli_query($db, $qAmmount);
             $otp = rand(11111,99999);
             $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
             mysqli_query($db, $s);
 
-            header("Location: otpChecker.php?userId=$id");
+            header("Location: otpCheckerDonNew.php?userId=$id");
         }
     } else {
         header("Location: newUser.php");

@@ -205,7 +205,7 @@ $(document).ready(function(){
                 <tbody>
                     <?php
                     $id = 0;
-                    $sql = "SELECT * FROM `donar_master` ORDER BY `ammount` DESC";
+                    $sql = "SELECT * FROM `donar_master` ORDER BY `ammount` DESC LIMIT 10";
                     $result = mysqli_query($db,$sql);
                     
                     if($result){
