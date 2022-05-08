@@ -61,6 +61,11 @@ if (isset($_POST['verify'])) {
             break;
         }
         $otp = rand(11111,99999);
+        
+        //Sending mail
+        
+        //Sending mail end
+
         $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
         mysqli_query($db, $s);
         $_SESSION["login"] = "OK";
