@@ -8,7 +8,10 @@
     <title>test</title>
 </head>
 <body>
-    <?php
+    <form>
+        <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_JSWT6KK09QxP77" async> </script> 
+    </form>
+    <!-- <?php
     echo "success\n";
     
     // $to_email = "dipankarmalick97@gmail.com";
@@ -23,6 +26,6 @@
     // }
 
 
-    ?>
+    ?> -->
 </body>
 </html>
