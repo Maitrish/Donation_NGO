@@ -63,7 +63,18 @@ if (isset($_POST['verify'])) {
         $otp = rand(11111,99999);
         
         //Sending mail
-        
+            $to = $email;
+            $subject = "OTP E-Helping Hand";
+            
+            $message = "<b>Use this OTP to login.</b>";
+            $message .= strval($otp);
+            
+            $header = "From:ourproject2022@gmail.com \r\n";
+            
+            $header .= "MIME-Version: 1.0\r\n";
+            $header .= "Content-type: text/html\r\n";
+            
+            $retval = mail ($to,$subject,$message,$header);
         //Sending mail end
 
         $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";

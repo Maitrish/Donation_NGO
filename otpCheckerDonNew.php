@@ -89,7 +89,8 @@ font-weight: 300;
                         otpInput = document.getElementById('exampleInputPassword1').value;
                         
                         if(otp == otpInput){
-                            window.location.href = 'test.php'; 
+                            sessionCheck();
+                             
                         }
                         else{
                             window.location.href = 'test1.php';
@@ -98,7 +99,14 @@ font-weight: 300;
                     </script>";
                 }
                 ?>
-                
+                <script>
+                    function sessionCheck(){
+                        <?php 
+                        $_SESSION["login"] = "OK"; 
+                        echo "window.location.href = 'test.php';";
+                        ?>
+                    }
+                </script>
                 
                 <a href = "index.php" style="text-align: center;">HOME</a>
             </form>  
