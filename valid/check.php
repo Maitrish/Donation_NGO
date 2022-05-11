@@ -83,7 +83,7 @@ if (isset($_POST['reg'])) {
     $note = mysqli_real_escape_string($db, $_POST['note']);
     $ammount = mysqli_real_escape_string($db, $_POST['ammount']);
     $otp = 0;
-    $is_verified = "N";
+    $is_active = "Y";
     
     $q = "SELECT * FROM `donar_master` WHERE email='$email'";
     $res = mysqli_query($db, $q);
@@ -91,8 +91,8 @@ if (isset($_POST['reg'])) {
         echo "<script>alert('Email aleady taken!');</script>";
         header("Location: newUser.php");
     } else {
-        $query = "INSERT INTO `donar_master` (first_name, last_name, email, phone, country, address, note, ammount, otp, is_verified) 
-					  VALUES('$first_name','$last_name', '$email', '$phone', '$country', '$address', '$note', $ammount, '$otp', '$is_verified')";
+        $query = "INSERT INTO `donar_master` (first_name, last_name, email, phone, country, address, note, ammount, otp, is_active) 
+					  VALUES('$first_name','$last_name', '$email', '$phone', '$country', '$address', '$note', $ammount, '$otp', '$is_active')";
 	    mysqli_query($db, $query);
         
         
@@ -113,7 +113,7 @@ if (isset($_POST['reg'])) {
 					  VALUES('$id','$phone','$amm', '$no')";
 	        mysqli_query($db, $qAmmount);
             $otp = rand(11111,99999);
-            $s="UPDATE `donar_master` SET `otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
+            $s="UPDATE `donar_master` SET `otp`=$otp WHERE `id`=$id";
             mysqli_query($db, $s);
 
             header("Location: otpCheckerDonNew.php?userId=$id");

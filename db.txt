@@ -13,7 +13,7 @@ CREATE TABLE donar_master(
   note VARCHAR (350) NULL,
   ammount INT (200) NULL,
   otp VARCHAR (200) NULL,
-  is_verified VARCHAR (20) NOT NULL,
+  is_active VARCHAR (20) NOT NULL,
   created_on datetime default CURRENT_TIMESTAMP
 );
 
