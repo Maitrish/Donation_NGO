@@ -38,7 +38,7 @@ if (isset($_POST['donate_Now'])) {
             mysqli_query($db, $qAmmount);
             $totalAmmount = $amm + $ammount;
             $otp = rand(11111,99999);
-            $s="UPDATE `donar_master` SET `phone`='$phone' , `note`='$noteNew',`ammount`=$totalAmmount,`otp`=$otp,`is_verified` = 'Y' WHERE `id`=$id";
+            $s="UPDATE `donar_master` SET `phone`='$phone' , `note`='$noteNew',`ammount`=$totalAmmount,`otp`=$otp WHERE `id`=$id";
             mysqli_query($db, $s);
 	        $_SESSION["login"] = "OK";
             header("Location: otpCheckerDonation.php?userId=$id");
