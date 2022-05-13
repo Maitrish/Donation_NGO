@@ -219,7 +219,7 @@ include "valid/check.php";
                         <h3 class="col-title">our mission</h3>
                         <div class="col-details">
 
-                          <p>Lorem ipsum dolor sit amet consect adipisscin elit proin vel lectus ut eta esami vera dolor sit amet consect</p>
+                          <p>Our mission is to build a future in which people live in harmony with nature.</p>
                           
                         </div>
                         <a href="#" class="btn btn-primary"> Read more </a>
@@ -239,7 +239,7 @@ include "valid/check.php";
                         <h3 class="col-title">Make donations</h3>
                         <div class="col-details">
 
-                          <p>Lorem ipsum dolor sit amet consect adipisscin elit proin vel lectus ut eta esami vera dolor sit amet consect</p>
+                          <p>Donate today to provide medical supplies, food, and education to the orphans.</p>
                           
                         </div>
                         <a href="#" class="btn btn-primary"> Read more </a>
@@ -259,7 +259,7 @@ include "valid/check.php";
                         <h3 class="col-title">Help & support</h3>
                         <div class="col-details">
 
-                          <p>Lorem ipsum dolor sit amet consect adipisscin elit proin vel lectus ut eta esami vera dolor sit amet consect</p>
+                          <p>Your support is needed to Provide Livelihood Support & Oxygen Assistance, Medical Supplies</p>
                           
                         </div>
                         <a href="#" class="btn btn-primary"> Read more </a>
@@ -279,7 +279,7 @@ include "valid/check.php";
                         <h3 class="col-title">our programs</h3>
                         <div class="col-details">
 
-                          <p>Lorem ipsum dolor sit amet consect adipisscin elit proin vel lectus ut eta esami vera dolor sit amet consect</p>
+                          <p>We have several programmes ranging from Education & Training to tree plantations.</p>
                           
                         </div>
                         <a href="#" class="btn btn-primary"> Read more </a>
@@ -514,17 +514,17 @@ include "valid/check.php";
 
             <ul class="owl-carousel list-unstyled list-sponsors">
 
-              <li> <img src="images/sponsors/bus.png" alt=""></li>
-              <li> <img src="images/sponsors/wikimedia.png" alt=""></li>
-              <li> <img src="images/sponsors/one-world.png" alt=""></li>
-              <li> <img src="images/sponsors/wikiversity.png" alt=""></li>
-              <li> <img src="images/sponsors/united-nations.png" alt=""></li>
+              <li> <img src="images\gallery\thumb\tesla.png" alt=""></li>
+              <li> <img src="images\gallery\thumb\tesla.png" alt=""></li>
+              <li> <img src="images\gallery\thumb\tesla.png" alt=""></li>
+              <li> <img src="images\gallery\thumb\tesla.png" alt=""></li>
+              <li> <img src="images\gallery\thumb\tesla.png" alt=""></li>
 
-              <li> <img src="images/sponsors/bus.png" alt=""></li>
-              <li> <img src="images/sponsors/wikimedia.png" alt=""></li>
-              <li> <img src="images/sponsors/one-world.png" alt=""></li>
-              <li> <img src="images/sponsors/wikiversity.png" alt=""></li>
-              <li> <img src="images/sponsors/united-nations.png" alt=""></li>
+              <li> <img src="images\gallery\thumb\tesla.png" alt=""></li>
+              <li> <img src="images\gallery\thumb\tesla.png" alt=""></li>
+              <li> <img src="images\gallery\thumb\tesla.png" alt=""></li>
+              <li> <img src="images\gallery\thumb\tesla.png" alt=""></li>
+              <li> <img src="images\gallery\thumb\tesla.png" alt=""></li>
 
             </ul>
 
