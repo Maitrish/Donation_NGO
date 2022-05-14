@@ -4,6 +4,7 @@ session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+
 require $_SERVER['DOCUMENT_ROOT'] . '/Donation_NGO/mail/Exception.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/Donation_NGO/mail/PHPMailer.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/Donation_NGO/mail/SMTP.php';

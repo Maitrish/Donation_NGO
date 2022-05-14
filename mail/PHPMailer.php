@@ -1703,6 +1703,9 @@ class PHPMailer
         } else {
             $this->edebug('Sending with sendmail');
         }
+        $headers = 'From: Multirater Surveys <info@multiratersurveys.com>' . "\n";
+        $headers .= 'MIME-Version: 1.0' . "\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $header = static::stripTrailingWSP($header) . static::$LE . static::$LE;
         //This sets the SMTP envelope sender which gets turned into a return-path header by the receiver
         //A space after `-f` is optional, but there is a long history of its presence

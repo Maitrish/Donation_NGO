@@ -4,6 +4,7 @@ session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+
 require $_SERVER['DOCUMENT_ROOT'] . '/Donation_NGO/mail/Exception.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/Donation_NGO/mail/PHPMailer.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/Donation_NGO/mail/SMTP.php';
@@ -26,6 +27,7 @@ $mail = new PHPMailer;
         $mail->Subject = 'E-Helping_Hand';
         $mail->msgHTML("This is your one time OTP ".$otp); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
         $mail->AltBody = 'HTML messaging not supported'; // If html emails is not supported by the receiver, show this body
+        
         // $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
         $mail->SMTPOptions = array(
                             'ssl' => array(

@@ -266,43 +266,11 @@
 
 	            <h2 class="title-style-1">Our Team <span class="title-under"></span></h2>
 
-	            <div class="row">
+	            <div class="row" >
 
-	                <div class="col-md-3 col-sm-6">
+	                
 
-	                    <div class="team-member">
-
-	                        <div class="thumnail">
-
-	                            <img src="images/team/member-1.jpg" alt="" class="cause-img">
-	                            
-	                        </div>
-
-
-
-	                        <h4 class="member-name"><a href="#">Robert C. Numbers</a></h4>
-
-	                        <div class="member-position">
-	                            CO-FOUNDER
-	                        </div>
-
-	                        <div class="btn-holder">
-
-	                          <a href="#" class="btn"> <i class="fa fa-envelope"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-facebook"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-google"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-twitter"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-linkedin"></i> </a>
-	                          
-	                        </div>
-
-	                        
-
-	                    </div> <!-- /.team-member -->
-	                    
-	                </div>
-
-	                <div class="col-md-3 col-sm-6">
+	                <div class="col-md-3 col-sm-6" >
 
 	                    <div class="team-member">
 
@@ -314,19 +282,19 @@
 
 
 
-	                        <h4 class="member-name"><a href="#">Marjorie R. Echevarria</a></h4>
+	                        <h4 class="member-name"><a href="#">Dipankar Malick</a></h4>
 
 	                        <div class="member-position">
-	                            CO-FOUNDER
+	                            FOUNDER
 	                        </div>
 
 	                        <div class="btn-holder">
 
 	                          <a href="#" class="btn"> <i class="fa fa-envelope"></i> </a>
 	                          <a href="#" class="btn"> <i class="fa fa-facebook"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-google"></i> </a>
+	                          <a href="mailto:dipankarmalick97@gmail.com" class="btn"> <i class="fa fa-google"></i> </a>
 	                          <a href="#" class="btn"> <i class="fa fa-twitter"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-linkedin"></i> </a>
+	                          <a href="https://www.linkedin.com/in/dipankar-malick-64186b216/" class="btn"> <i class="fa fa-linkedin"></i> </a>
 	                          
 	                        </div>
 
@@ -337,7 +305,7 @@
 	                </div>
 
 
-	                <div class="col-md-3 col-sm-6">
+	                <div class="col-md-3 col-sm-6" style="float: right;">
 
 	                    <div class="team-member">
 
@@ -349,7 +317,7 @@
 
 
 
-	                        <h4 class="member-name"><a href="#">Allison J. Falls</a></h4>
+	                        <h4 class="member-name"><a href="#">Maitrish Mandal</a></h4>
 
 	                        <div class="member-position">
 	                            CO-FOUNDER
@@ -359,9 +327,9 @@
 
 	                          <a href="#" class="btn"> <i class="fa fa-envelope"></i> </a>
 	                          <a href="#" class="btn"> <i class="fa fa-facebook"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-google"></i> </a>
+	                          <a href="mailto:mmaitrish@gmail.com" class="btn"> <i class="fa fa-google"></i> </a>
 	                          <a href="#" class="btn"> <i class="fa fa-twitter"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-linkedin"></i> </a>
+	                          <a href="https://www.linkedin.com/in/maitrish-mandal-534005168/" class="btn"> <i class="fa fa-linkedin"></i> </a>
 	                          
 	                        </div>
 
@@ -372,39 +340,7 @@
 	                </div>
 
 
-	                <div class="col-md-3 col-sm-6">
-
-	                    <div class="team-member">
-
-	                        <div class="thumnail">
-
-	                            <img src="images/team/member-2.jpg" alt="" class="cause-img">
-	                            
-	                        </div>
-
-
-
-	                        <h4 class="member-name"><a href="#">Bryan B. Stevens</a></h4>
-
-	                        <div class="member-position">
-	                            CO-FOUNDER
-	                        </div>
-
-	                        <div class="btn-holder">
-
-	                          <a href="#" class="btn"> <i class="fa fa-envelope"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-facebook"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-google"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-twitter"></i> </a>
-	                          <a href="#" class="btn"> <i class="fa fa-linkedin"></i> </a>
-	                          
-	                        </div>
-
-	                        
-
-	                    </div> <!-- /.team-member -->
-	                    
-	                </div>
+	                
 
 	            </div> <!-- /.row -->
 
