@@ -2,6 +2,10 @@
 include "security/db.php";
 include "security/constant.php";
 include "security/co.inc";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+
 ?>
 <! DOCTYPE html>  
 <html lang="en" >  
@@ -65,7 +69,7 @@ font-weight: 300;
                     <label for="exampleInputPassword1"> Enter OTP </label>  
                     <input type="number" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Check your mail for OTP" name="otpInput" required>  
                 </div>  
-                <button type="button" class="btn btn-primary btn-block" onClick="checkOtp()" name="validate"> Process to pay </button>  
+                <button type="button" id="otpBtn" class="btn btn-primary btn-block" onClick="checkOtp()" name="validate"> Process to pay </button>  
                 <?php
                 $flag = 0;
                 if(isset($_GET['userId'])){
@@ -76,14 +80,16 @@ font-weight: 300;
                     if($result){
                         while($row = mysqli_fetch_assoc($result)){
                             $otp=(string)$row['otp'];
+                            $firstName = $row['first_name'];
+                            $em = $row['email'];
                             break;
                         }
                     }
+                    
                     echo "<script>var id = $id;
                     var otp = $otp;
-                    var verified = 'N';
-                    console.log('Id is : ' + id);
-                    console.log('OTP is : ' + otp);
+                    
+                    
                     function checkOtp(){
                         var otpInput = 0;
                         otpInput = document.getElementById('exampleInputPassword1').value;

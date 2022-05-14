@@ -3,6 +3,7 @@ include "security/db.php";
 include "security/constant.php";
 
 
+
 //  Email Validation 
 if (isset($_POST['donate_Now'])) {
     $flag = 0;
@@ -31,6 +32,8 @@ if (isset($_POST['donate_Now'])) {
             while($row = mysqli_fetch_assoc($result)){
                 $id = $row['id'];
                 $amm = $row['ammount'];
+                $email = $row['email'];
+                $firstName = $row['first_name'];
                 break;
             }
             $qAmmount = "INSERT INTO `ammount` (d_id, phone, ammount, note) 
@@ -41,7 +44,15 @@ if (isset($_POST['donate_Now'])) {
             $s="UPDATE `donar_master` SET `phone`='$phone' , `note`='$noteNew',`ammount`=$totalAmmount,`otp`=$otp WHERE `id`=$id";
             mysqli_query($db, $s);
 	        $_SESSION["login"] = "OK";
-            header("Location: otpCheckerDonation.php?userId=$id");
+            session_start();
+
+                    // Set session variables
+            $_SESSION["email"] = $email;
+            $_SESSION["firstName"] = $firstName;
+            $_SESSION["otp"] = $otp; 
+            $_SESSION["id"] = $id; 
+            header("Location: send.php");
+            // header("Location: otpCheckerDonation.php?userId=$id");
         }
     } else {
         $_SESSION["login"] = "OK";
@@ -58,29 +69,21 @@ if (isset($_POST['verify'])) {
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
             $id = $row['id'];
+            $firstName = $row['first_name'];
+            $em = $row['email'];
             break;
         }
         $otp = rand(11111,99999);
         
-        //Sending mail
-            // $to = $email;
-            // $subject = "OTP E-Helping Hand";
-            
-            // $message = "<b>Use this OTP to login.</b>";
-            // $message .= strval($otp);
-            
-            // $header = "From:ourproject2022@gmail.com \r\n";
-            
-            // $header .= "MIME-Version: 1.0\r\n";
-            // $header .= "Content-type: text/html\r\n";
-            
-            // $retval = mail ($to,$subject,$message,$header);
-        //Sending mail end
-
         $s="UPDATE `donar_master` SET `otp`=$otp WHERE `id`=$id";
         mysqli_query($db, $s);
+        session_start();
         $_SESSION["login"] = "OK";
-        header("Location: otpChecker.php?userId=$id");
+        $_SESSION["email"] = $email;
+        $_SESSION["firstName"] = $firstName;
+        $_SESSION["otp"] = $otp; 
+        $_SESSION["id"] = $id; 
+        header("Location: sendMailStatus.php");
     } else {
         header("Location: test1.php");
     }
@@ -131,12 +134,19 @@ if (isset($_POST['reg'])) {
             $otp = rand(11111,99999);
             $s="UPDATE `donar_master` SET `otp`=$otp WHERE `id`=$id";
             mysqli_query($db, $s);
-
-            header("Location: otpCheckerDonNew.php?userId=$id");
+            session_start();
+            $_SESSION["login"] = "OK";
+            $_SESSION["email"] = $email;
+            $_SESSION["firstName"] = $firstName;
+            $_SESSION["otp"] = $otp; 
+            $_SESSION["id"] = $id;
+            header("Location: sendMailNew.php");
         }
     } else {
         header("Location: newUser.php");
     }
 }
+
+
 
 ?>
